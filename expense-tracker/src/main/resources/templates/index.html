@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Expense Tracker</title>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f1f5f9;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        h1 {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        form input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 70%;
+            background-color: #1e293b;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #334155;
+        }
+
+        a {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+
+<h1>💰 Expense Tracker</h1>
+
+<form th:action="@{/add}" method="post">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="number" name="amount" placeholder="Amount" required>
+    <input type="text" name="category" placeholder="Category" required>
+    <input type="date" name="date" required>
+    <button type="submit">Add</button>
+</form>
+
+<h2>All Expenses</h2>
+<p>Total: ₹<span th:text="${total}"></span></p>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Amount</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr th:each="e : ${expenses}">
+        <td th:text="${e.title}"></td>
+        <td th:text="${e.amount}"></td>
+        <td th:text="${e.category}"></td>
+        <td th:text="${e.date}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${e.id})}">Edit</a> |
+            <a th:href="@{/delete/{id}(id=${e.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
