@@ -1,12 +1,10 @@
-FROM eclipse-temurin:24-jdk
+FROM maven:3.9.9-eclipse-temurin-17
 
 WORKDIR /app
-
 COPY . .
 
-RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 EXPOSE 8080
 
-CMD ["java", "-jar", "target/expense-tracker-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/*.jar"]
