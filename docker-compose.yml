@@ -1,6 +1,0 @@
-services:
-  expense-tracker:
-    build:
-      context: https://github.com/SPRandhawa/expense-tracker.git
-    ports:
-      - "8000:8080"
