@@ -34,5 +34,7 @@ A full-stack Expense Tracker web application built using **Spring Boot**, **Thym
 🤖 AI-based spending insights
 
 ---
-## 🙌 Author
-SP Randhawa
+## 🙌 Author  
+## SP Randhawa  
+
+🔗 [View Project](https://expense-tracker-01s4.onrender.com)
